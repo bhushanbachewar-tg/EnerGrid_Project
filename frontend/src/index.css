@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ener-navy: #061a37;
+  --ener-green: #22c55e;
+}
+
+@layer utilities {
+  .glass-effect {
+    background: rgba(6, 26, 55, 0.35);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+}
