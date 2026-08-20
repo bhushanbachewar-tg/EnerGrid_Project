@@ -9,12 +9,33 @@ import {
   type ReactNode,
 } from "react";
 
+export type RevealVariant =
+  | "fade"
+  | "left"
+  | "right"
+  | "scale"
+  | "scale-soft"
+  | "stat"
+  | "focus"
+  | "up";
+
+const VARIANT_CLASS: Record<RevealVariant, string> = {
+  fade: "ir-reveal-fade",
+  left: "ir-reveal-left",
+  right: "ir-reveal-right",
+  scale: "ir-reveal-scale",
+  "scale-soft": "ir-reveal-scale-soft",
+  stat: "ir-reveal-stat",
+  focus: "ir-reveal-focus",
+  up: "ir-reveal-up",
+};
+
 type ScrollRevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
   as?: ElementType;
-  scale?: boolean;
+  variant?: RevealVariant;
   style?: CSSProperties;
 };
 
@@ -23,7 +44,7 @@ export default function ScrollReveal({
   className = "",
   delay = 0,
   as: Tag = "div",
-  scale = false,
+  variant = "fade",
   style,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLElement | null>(null);
@@ -57,9 +78,9 @@ export default function ScrollReveal({
   }, []);
 
   const classes = [
-    "ir-scroll-reveal",
-    scale ? "ir-scroll-reveal-scale" : "",
-    visible ? "ir-scroll-reveal-visible" : "",
+    "ir-reveal",
+    VARIANT_CLASS[variant],
+    visible ? "ir-reveal-visible" : "",
     className,
   ]
     .filter(Boolean)

@@ -1,7 +1,28 @@
-@keyframes ir-fade-up {
+/* ── Hero load-time sequence ── */
+@keyframes ir-hero-fade-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ir-hero-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ir-hero-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -9,8 +30,16 @@
   }
 }
 
-.ir-fade-up {
-  animation: ir-fade-up 0.7s ease-out both;
+.ir-hero-fade {
+  animation: ir-hero-fade-in 0.55s ease-out both;
+}
+
+.ir-hero-scale {
+  animation: ir-hero-scale-in 0.65s ease-out both;
+}
+
+.ir-hero-rise {
+  animation: ir-hero-rise-in 0.6s ease-out both;
 }
 
 .ir-delay-1 {
@@ -18,43 +47,74 @@
 }
 
 .ir-delay-2 {
-  animation-delay: 160ms;
+  animation-delay: 180ms;
 }
 
 .ir-delay-3 {
-  animation-delay: 240ms;
+  animation-delay: 300ms;
 }
 
 .ir-delay-4 {
-  animation-delay: 320ms;
+  animation-delay: 420ms;
 }
 
-.ir-scroll-reveal {
+/* ── Scroll-triggered reveals ── */
+.ir-reveal {
   opacity: 0;
-  transform: translateY(25px);
   transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
+    opacity 0.55s ease-out,
+    transform 0.55s ease-out;
   will-change: opacity, transform;
 }
 
-.ir-scroll-reveal-scale {
-  transform: translateY(20px) scale(0.95);
+.ir-reveal-fade {
+  transform: none;
 }
 
-.ir-scroll-reveal-visible {
+.ir-reveal-left {
+  transform: translateX(-20px);
+}
+
+.ir-reveal-right {
+  transform: translateX(20px);
+}
+
+.ir-reveal-scale {
+  transform: scale(0.97);
+}
+
+.ir-reveal-scale-soft {
+  transform: scale(0.96);
+}
+
+.ir-reveal-stat {
+  transform: scale(0.94);
+}
+
+.ir-reveal-focus {
+  transform: scale(0.88);
+  transition-duration: 0.8s;
+}
+
+.ir-reveal-up {
+  transform: translateY(12px);
+}
+
+.ir-reveal-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ir-fade-up {
+  .ir-hero-fade,
+  .ir-hero-scale,
+  .ir-hero-rise {
     animation: none;
     opacity: 1;
     transform: none;
   }
 
-  .ir-scroll-reveal {
+  .ir-reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -71,6 +131,18 @@
 
 .ir-hero-viewport {
   min-height: calc(100svh - 4rem);
+}
+
+.ir-hero-with-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 62% center;
+}
+
+@media (max-width: 640px) {
+  .ir-hero-with-image {
+    background-position: 72% center;
+  }
 }
 
 .ir-hero-transition {

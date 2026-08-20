@@ -5,7 +5,7 @@ export default function InvestorOverview() {
   return (
     <section className="ir-section-white px-4 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:gap-16">
-        <ScrollReveal>
+        <ScrollReveal variant="left">
           <div>
             <p className="text-xs font-semibold tracking-[0.22em] text-ener-green">
               {investorOverview.label}
@@ -16,7 +16,7 @@ export default function InvestorOverview() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={100}>
+        <ScrollReveal delay={120} variant="scale-soft">
           <div>
             <p className="text-base leading-relaxed text-[#0B192C]/75">
               {investorOverview.lead}
@@ -33,7 +33,8 @@ export default function InvestorOverview() {
           <ScrollReveal
             key={pillar.title}
             as="article"
-            delay={160 + index * 90}
+            delay={200 + index * 100}
+            variant="scale"
             className="ir-light-card h-full rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-ener-green/30"
           >
             <div className="mb-4 h-1.5 w-10 rounded-full bg-ener-green" />

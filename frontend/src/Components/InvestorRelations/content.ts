@@ -1,3 +1,5 @@
+export const investorHeroImage = "/images/investor-relations-hero.jpg";
+
 export const investorOverview = {
   label: "INVESTOR RELATIONS",
   heading: "Investing in India's Energy Future",
