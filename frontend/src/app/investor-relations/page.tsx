@@ -1,8 +1,23 @@
+import InvestorCTA from "../../Components/InvestorRelations/InvestorCTA";
+import InvestorIntroHero from "../../Components/InvestorRelations/InvestorIntroHero";
+import InvestorOverview from "../../Components/InvestorRelations/InvestorOverview";
+import InvestorResources from "../../Components/InvestorRelations/InvestorResources";
+import InvestmentCommitment from "../../Components/InvestorRelations/InvestmentCommitment";
+import PartnerHighlights from "../../Components/InvestorRelations/PartnerHighlights";
+import StrategicPartners from "../../Components/InvestorRelations/StrategicPartners";
+
+import "./investor-relations.css";
+
 export default function Page() {
   return (
-    <div className="min-h-screen px-6 pt-8">
-      <h1 className="text-3xl font-bold">Investor Relations - Work in Progress</h1>
-    </div>
+    <main className="min-h-screen bg-white text-[#0B192C]">
+      <InvestorIntroHero />
+      <InvestorOverview />
+      <StrategicPartners />
+      <PartnerHighlights />
+      <InvestmentCommitment />
+      <InvestorResources />
+      <InvestorCTA />
+    </main>
   );
 }
-
