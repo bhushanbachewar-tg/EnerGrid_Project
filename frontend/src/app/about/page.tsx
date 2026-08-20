@@ -59,7 +59,7 @@ const focusAreas: FocusArea[] = [
     description:
       "Building large-scale renewable energy projects that help accelerate India's transition towards a cleaner energy future.",
     image:
-      "https://www.pv-magazine-india.com/wp-content/uploads/sites/8/2018/01/Rajasthan_3_100_MW-1200x675.jpg",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -195,7 +195,7 @@ export default function About() {
 <Header
   title="About Us"
   subtitle="Learn more about our company and our mission"
-  image="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=80"
+  image="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80"
 />
     <main className="overflow-hidden bg-white text-slate-900">
 
@@ -417,7 +417,7 @@ export default function About() {
             >
 
               <motion.img
-                src="https://www.pv-magazine-india.com/wp-content/uploads/sites/8/2018/01/Rajasthan_3_100_MW-1200x675.jpg"
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80"
                 alt="Large scale solar energy project"
                 initial={{ scale: 1.1 }}
                 whileInView={{ scale: 1 }}
