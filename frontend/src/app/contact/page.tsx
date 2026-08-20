@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -9,11 +10,8 @@ import {
   Mail,
   MapPin,
   Navigation,
-  Phone,
   type LucideIcon,
 } from "lucide-react";
-
-import Header from "../../Components/Commons/Header";
 
 /**
  * Source: https://www.energrid.in/energrid-contact-us/
@@ -31,7 +29,6 @@ const OFFICE = {
   fullAddress:
     "Unit No. 101, First Floor, Windsor, Village KoleKalyan, Off CST Road, Vidyanagari Marg, Kalina, Santacruz East, Mumbai 400098",
   email: "info@energrid.in",
-  phone: "+91 7208493885",
   linkedin:
     "https://www.linkedin.com/company/energrid-enerica-regrid-infra-private-limited",
   // Windsor, Off CST Road, Kalina (near BKC) — Plus Code area 3V96+PP
@@ -215,16 +212,49 @@ function ContactCard({
   );
 }
 
+function ContactHero() {
+  return (
+    <section className="relative min-h-[640px] overflow-hidden bg-slate-950">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/contact-banner.jpg"
+          alt="EnerGrid office"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/55 to-slate-950/20" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl items-center px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="max-w-3xl"
+        >
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+            EnerGrid
+          </p>
+          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Contact Us
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-white sm:text-xl">
+            Reach our Mumbai office for enquiries, partnerships and media.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export default function Page() {
   const reduceMotion = useReducedMotion();
 
   return (
     <>
-      <Header
-        title="Contact Us"
-        subtitle="Reach our Mumbai office for enquiries, partnerships and media."
-        image="/images/contact-banner.png"
-      />
+      <ContactHero />
 
       <main className="overflow-hidden bg-white text-slate-900">
         {/* Intro + contact grid */}
@@ -283,14 +313,6 @@ export default function Page() {
                 href={`mailto:${OFFICE.email}`}
               >
                 <span className="font-medium text-slate-900">{OFFICE.email}</span>
-              </ContactCard>
-
-              <ContactCard
-                icon={Phone}
-                label="Phone"
-                href={`tel:${OFFICE.phone.replace(/\s/g, "")}`}
-              >
-                <span className="font-medium text-slate-900">{OFFICE.phone}</span>
               </ContactCard>
 
               <ContactCard icon={Link2} label="LinkedIn" href={OFFICE.linkedin}>
