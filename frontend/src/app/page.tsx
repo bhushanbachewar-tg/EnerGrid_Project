@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -114,40 +115,53 @@ export default function Page() {
   return (
     <main className="bg-white">
       {/* ── Section 1: Hero ── */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Animated gradient background */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-br from-ener-green/10 via-emerald-50 to-white blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-ener-green/5 blur-3xl" />
+      <section className="relative min-h-screen overflow-hidden bg-white">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-bg.jpg"
+            alt="EnerGrid background"
+            fill
+            priority
+            className="object-cover object-right"
+          />
+          {/* Readability overlay (darker on left for text readability) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ener-navy/90 via-ener-navy/50 to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-20 md:pt-28">
+        <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pb-24 pt-20 md:px-12 md:pt-28 lg:px-20">
           <motion.div
-            variants={reveal}
+            variants={staggerParent}
             initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
+            animate="show"
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-ener-green/20 bg-ener-green/5 px-4 py-1.5 text-sm font-medium text-ener-green">
+            <motion.span
+              variants={revealShort}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90"
+            >
               <span className="h-2 w-2 animate-pulse rounded-full bg-ener-green" />
               India&apos;s Green Infrastructure Platform
-            </span>
+            </motion.span>
 
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-ener-navy sm:text-5xl md:text-6xl">
+            <motion.h1
+              variants={reveal}
+              className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl"
+            >
               Accelerating the{" "}
-              <span className="bg-gradient-to-r from-ener-green to-emerald-400 bg-clip-text text-transparent">
-                Green Energy Transition
-              </span>
-            </h1>
+              <span className="text-ener-green">Green Energy Transition</span>
+            </motion.h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+            <motion.p
+              variants={revealShort}
+              className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80"
+            >
               EnerGrid is building the next wave of India&apos;s power ecosystem
               through resilient transmission, BESS-backed reliability, and
               renewables at scale.
-            </p>
+            </motion.p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <motion.div variants={revealShort} className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="#core-focus"
                 className="inline-flex items-center gap-2 rounded-xl bg-ener-green px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-ener-green/25 transition hover:bg-emerald-500"
@@ -157,11 +171,11 @@ export default function Page() {
               </Link>
               <Link
                 href="/investor-relations"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-ener-navy/15 px-7 py-3.5 text-sm font-semibold text-ener-navy transition hover:border-ener-green hover:text-ener-green"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-ener-green/35 bg-transparent px-7 py-3.5 text-sm font-semibold text-white/90 transition hover:border-ener-green hover:text-ener-green"
               >
                 View Pipeline
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
