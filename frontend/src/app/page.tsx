@@ -134,44 +134,33 @@ export default function Page() {
             variants={staggerParent}
             initial="hidden"
             animate="show"
-            className="max-w-3xl"
+            className="max-w-xl"
           >
-            <motion.span
+            <motion.p
               variants={revealShort}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90"
+              className="text-xs font-medium uppercase tracking-[0.2em] text-ener-green sm:text-sm"
             >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-ener-green" />
               India&apos;s Green Infrastructure Platform
-            </motion.span>
+            </motion.p>
 
             <motion.h1
               variants={reveal}
-              className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl"
+              className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl"
             >
-              Accelerating the{" "}
-              <span className="text-ener-green">Green Energy Transition</span>
+              Accelerating the Green Energy Transition
             </motion.h1>
 
-            <motion.p
-              variants={revealShort}
-              className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80"
-            >
-              EnerGrid is building the next wave of India&apos;s power ecosystem
-              through resilient transmission, BESS-backed reliability, and
-              renewables at scale.
-            </motion.p>
-
-            <motion.div variants={revealShort} className="mt-8 flex flex-wrap gap-4">
+            <motion.div variants={revealShort} className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#core-focus"
-                className="inline-flex items-center gap-2 rounded-xl bg-ener-green px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-ener-green/25 transition hover:bg-emerald-500"
+                className="inline-flex items-center gap-2 rounded-lg bg-ener-green px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-500"
               >
                 Explore EnerGrid
-                <ArrowRight size={16} />
+                <ArrowRight size={15} />
               </Link>
               <Link
                 href="/investor-relations"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-ener-green/35 bg-transparent px-7 py-3.5 text-sm font-semibold text-white/90 transition hover:border-ener-green hover:text-ener-green"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-ener-green hover:text-ener-green"
               >
                 View Pipeline
               </Link>

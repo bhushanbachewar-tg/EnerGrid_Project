@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const quickLinks = [
@@ -15,9 +16,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {/* Col 1 */}
           <div>
-            <div className="text-lg font-extrabold tracking-tight">
-              Ener<span className="text-ener-green">Grid</span>
-            </div>
+            <Link href="/" aria-label="EnerGrid Home" className="inline-block">
+              <div className="relative h-10 w-[150px]">
+                <Image
+                  src="/images/logo.png"
+                  alt="EnerGrid"
+                  fill
+                  className="object-contain object-left"
+                  sizes="150px"
+                />
+              </div>
+            </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
               Accelerating India&apos;s Green Energy Transition.
             </p>
@@ -66,4 +75,3 @@ export default function Footer() {
     </footer>
   );
 }
-
