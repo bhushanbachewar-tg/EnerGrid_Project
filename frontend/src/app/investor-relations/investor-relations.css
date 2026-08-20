@@ -1,0 +1,103 @@
+@keyframes ir-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ir-fade-up {
+  animation: ir-fade-up 0.7s ease-out both;
+}
+
+.ir-delay-1 {
+  animation-delay: 80ms;
+}
+
+.ir-delay-2 {
+  animation-delay: 160ms;
+}
+
+.ir-delay-3 {
+  animation-delay: 240ms;
+}
+
+.ir-delay-4 {
+  animation-delay: 320ms;
+}
+
+.ir-scroll-reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.ir-scroll-reveal-scale {
+  transform: translateY(20px) scale(0.95);
+}
+
+.ir-scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ir-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ir-scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.ir-grid-overlay {
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 80%);
+}
+
+.ir-hero-viewport {
+  min-height: calc(100svh - 4rem);
+}
+
+.ir-hero-transition {
+  height: 3rem;
+  background: linear-gradient(to bottom, #061a37, #ffffff);
+}
+
+@media (min-width: 640px) {
+  .ir-hero-transition {
+    height: 4rem;
+  }
+}
+
+.ir-section-white {
+  background-color: #ffffff;
+}
+
+.ir-section-mint {
+  background-color: #f0fbf6;
+}
+
+.ir-section-navy {
+  background-color: #061a37;
+}
+
+.ir-light-card {
+  background: #ffffff;
+  border: 1px solid rgba(11, 25, 44, 0.08);
+  box-shadow: 0 8px 24px rgba(6, 26, 55, 0.04);
+}

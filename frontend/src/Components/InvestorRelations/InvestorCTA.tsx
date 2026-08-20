@@ -1,0 +1,33 @@
+import Link from "next/link";
+
+import { investorCta } from "./content";
+import ScrollReveal from "./ScrollReveal";
+
+export default function InvestorCTA() {
+  return (
+    <section className="ir-section-navy px-4 py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <ScrollReveal>
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            {investorCta.heading}
+          </h2>
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+            {investorCta.text}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <Link
+            href={investorCta.buttonHref}
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-ener-green px-6 py-3 font-semibold text-black transition hover:bg-emerald-300"
+          >
+            {investorCta.buttonLabel}
+          </Link>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
