@@ -119,7 +119,7 @@ export default function Page() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero-bg.jpg"
+            src="/images/hero-bg.jpg"
             alt="EnerGrid background"
             fill
             priority
@@ -211,14 +211,16 @@ export default function Page() {
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
-            className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-gradient-to-br from-ener-navy/5 to-ener-green/10 shadow-lg"
+            className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg"
           >
-            <div className="text-center">
-              <Globe size={48} className="mx-auto text-ener-green/40" />
-              <p className="mt-3 text-sm font-medium text-slate-400">
-                Image placeholder
-              </p>
-            </div>
+            <Image
+              src="/images/about-snapshot.jpg"
+              alt="EnerGrid sustainable energy infrastructure"
+              fill
+              className="object-cover"
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </motion.div>
         </div>
       </section>
