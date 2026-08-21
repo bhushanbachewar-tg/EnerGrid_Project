@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -16,7 +15,7 @@ export default function Header({
 }: HeaderProps) {
   return (
     <section
-      className="relative min-h-[640px] overflow-hidden bg-slate-950"
+      className="relative min-h-[640px] overflow-hidden bg-inverse"
       style={{
         backgroundImage: image ? `url("${image}")` : undefined,
         backgroundSize: "cover",
@@ -24,6 +23,9 @@ export default function Header({
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div className="absolute inset-0 bg-inverse/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-inverse via-inverse/75 to-inverse/20" />
+
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl items-center px-6 lg:px-8">
         <motion.div
@@ -41,19 +43,16 @@ export default function Header({
           }}
           className="max-w-3xl"
         >
-          {/* Small heading */}
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
             EnerGrid
           </p>
 
-          {/* Main heading */}
-          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-semibold tracking-tight text-on-inverse sm:text-6xl lg:text-7xl">
             {title}
           </h1>
 
-          {/* Subtitle */}
           {subtitle && (
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-on-inverse/90 sm:text-xl">
               {subtitle}
             </p>
           )}
