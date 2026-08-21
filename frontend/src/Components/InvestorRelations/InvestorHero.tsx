@@ -35,7 +35,7 @@ export default function InvestorHero() {
           <span>Powering India&apos;s Energy Transition</span>
         </div>
 
-        <h1 className="ir-hero-scale ir-delay-2 mt-6 max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="ir-hero-scale ir-delay-2 mt-6 max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
           <span className="block text-white">Investor</span>
           <span className="block text-ener-green">Relations</span>
         </h1>

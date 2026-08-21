@@ -262,7 +262,7 @@ export default function About() {
 
             <motion.h1
               variants={fadeUp}
-              className="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
+              className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
             >
               Building the infrastructure for a{" "}
               <span className="text-emerald-400">
@@ -694,7 +694,7 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="text-4xl font-semibold tracking-tight text-slate-950"
+                  className="text-4xl font-bold tracking-tight text-slate-950"
                 >
                   {stat.value}
                 </motion.p>
@@ -762,7 +762,7 @@ export default function About() {
               className="mt-8 rounded-2xl bg-slate-950 p-6 text-white"
             >
 
-              <p className="text-3xl font-semibold">
+              <p className="text-3xl font-bold">
                 $300M
               </p>
 

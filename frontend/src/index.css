@@ -7,6 +7,42 @@
   --ener-green: #22c55e;
 }
 
+@layer base {
+  html {
+    font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  body {
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.625;
+  }
+
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  button,
+  [type="button"],
+  [type="submit"] {
+    font-family: inherit;
+    font-weight: 600;
+  }
+}
+
 @layer utilities {
   .glass-effect {
     background: rgba(6, 26, 55, 0.35);

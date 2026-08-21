@@ -38,7 +38,7 @@ export default function InvestorIntroHero() {
             EnerGrid
           </p>
 
-          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
             Investor Relations
           </h1>
 

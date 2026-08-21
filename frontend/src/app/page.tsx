@@ -104,7 +104,7 @@ function FocusCard({
           <Icon size={22} />
         </div>
       </div>
-      <h3 className="mt-5 text-xl font-bold text-ener-navy">{title}</h3>
+      <h3 className="mt-5 text-xl font-semibold text-ener-navy">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
     </motion.div>
   );
@@ -178,7 +178,7 @@ export default function Page() {
             whileInView="show"
             viewport={viewportOnce}
           >
-            <h2 className="text-3xl font-extrabold tracking-tight text-ener-navy">
+            <h2 className="text-3xl font-semibold tracking-tight text-ener-navy">
               Powering India&apos;s Sustainable Future
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -231,7 +231,7 @@ export default function Page() {
                 className="text-center"
               >
                 <s.icon size={28} className="mx-auto text-ener-green" />
-                <p className="mt-3 text-2xl font-extrabold text-white md:text-3xl">
+                <p className="mt-3 text-2xl font-bold text-white md:text-3xl">
                   {s.value}
                 </p>
                 <p className="mt-1 text-sm text-slate-300">{s.label}</p>
@@ -251,7 +251,7 @@ export default function Page() {
             viewport={viewportOnce}
             className="text-center"
           >
-            <h2 className="text-3xl font-extrabold tracking-tight text-ener-navy">
+            <h2 className="text-3xl font-semibold tracking-tight text-ener-navy">
               Core Focus Areas
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-base text-slate-600">
@@ -277,7 +277,7 @@ export default function Page() {
             whileInView="show"
             viewport={viewportOnce}
           >
-            <h2 className="text-3xl font-extrabold tracking-tight text-ener-navy">
+            <h2 className="text-3xl font-semibold tracking-tight text-ener-navy">
               Strategic Partners
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-base text-slate-600">
@@ -297,7 +297,7 @@ export default function Page() {
               <motion.div
                 key={name}
                 variants={revealShort}
-                className="flex h-20 w-44 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-lg font-bold tracking-wide text-ener-navy shadow-sm"
+                className="flex h-20 w-44 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-lg font-semibold tracking-wide text-ener-navy shadow-sm"
               >
                 {name}
               </motion.div>
@@ -315,7 +315,7 @@ export default function Page() {
           viewport={viewportOnce}
           className="mx-auto max-w-3xl px-4 text-center"
         >
-          <h2 className="text-3xl font-extrabold tracking-tight text-ener-navy md:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-ener-navy md:text-4xl">
             Build the Future With Us
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600">

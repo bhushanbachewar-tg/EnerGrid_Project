@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Outfit } from "next/font/google";
 
 import Navbar from "../Components/Commons/Navbar";
 import Footer from "../Components/Commons/Footer";
 
 import "../index.css";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+});
 
 export const metadata: Metadata = {
   title: "EnerGrid",
@@ -13,8 +20,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col bg-ener-navy pt-16 text-white">
+    <html lang="en" className={outfit.variable}>
+      <body
+        className={`${outfit.className} flex min-h-screen flex-col bg-ener-navy pt-16 font-sans text-white antialiased`}
+      >
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />

@@ -6,7 +6,7 @@ export default function StrategicPartners() {
     <section id="strategic-partners" className="ir-section-white px-4 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-3xl" variant="fade">
-          <h2 className="text-3xl font-extrabold tracking-tight text-[#0B192C] sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-[#0B192C] sm:text-4xl">
             Strategic Partners
           </h2>
         </ScrollReveal>
@@ -30,7 +30,7 @@ export default function StrategicPartners() {
                 <p className="text-xs font-semibold tracking-[0.18em] text-ener-green">
                   {partner.shortName}
                 </p>
-                <h3 className="mt-1 text-xl font-bold text-[#0B192C]">
+                <h3 className="mt-1 text-xl font-semibold text-[#0B192C]">
                   {partner.name}
                 </h3>
               </div>

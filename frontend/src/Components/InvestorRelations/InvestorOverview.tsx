@@ -10,7 +10,7 @@ export default function InvestorOverview() {
             <p className="text-xs font-semibold tracking-[0.22em] text-ener-green">
               {investorOverview.label}
             </p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0B192C] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#0B192C] sm:text-4xl">
               {investorOverview.heading}
             </h2>
           </div>
@@ -38,7 +38,7 @@ export default function InvestorOverview() {
             className="ir-light-card h-full rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-ener-green/30"
           >
             <div className="mb-4 h-1.5 w-10 rounded-full bg-ener-green" />
-            <h3 className="text-lg font-bold text-[#0B192C]">{pillar.title}</h3>
+            <h3 className="text-lg font-semibold text-[#0B192C]">{pillar.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-[#0B192C]/70">
               {pillar.text}
             </p>

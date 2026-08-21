@@ -34,7 +34,7 @@ export default function Footer() {
 
           {/* Col 2 */}
           <div>
-            <h3 className="text-sm font-bold text-white">Quick Links</h3>
+            <h3 className="text-sm font-semibold tracking-wide text-white">Quick Links</h3>
             <div className="mt-4 flex flex-col gap-2">
               {quickLinks.map((l) => (
                 <Link
@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* Col 3 */}
           <div>
-            <h3 className="text-sm font-bold text-white">Contact</h3>
+            <h3 className="text-sm font-semibold tracking-wide text-white">Contact</h3>
             <div className="mt-4 space-y-2 text-sm text-slate-300">
               <div>
                 <span className="font-semibold text-white/90">Email:</span>{" "}
