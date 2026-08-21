@@ -7,10 +7,10 @@ export default function InvestorOverview() {
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:gap-16">
         <ScrollReveal variant="left">
           <div>
-            <p className="text-xs font-semibold tracking-[0.22em] text-ener-green">
+            <p className="text-xs font-semibold tracking-[0.22em] text-accent">
               {investorOverview.label}
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#0B192C] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
               {investorOverview.heading}
             </h2>
           </div>
@@ -18,10 +18,10 @@ export default function InvestorOverview() {
 
         <ScrollReveal delay={120} variant="scale-soft">
           <div>
-            <p className="text-base leading-relaxed text-[#0B192C]/75">
+            <p className="text-base leading-relaxed text-primary/75">
               {investorOverview.lead}
             </p>
-            <p className="mt-4 text-base leading-relaxed text-[#0B192C]/70">
+            <p className="mt-4 text-base leading-relaxed text-primary/70">
               {investorOverview.support}
             </p>
           </div>
@@ -35,11 +35,11 @@ export default function InvestorOverview() {
             as="article"
             delay={200 + index * 100}
             variant="scale"
-            className="ir-light-card h-full rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-ener-green/30"
+            className="ir-light-card h-full rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/30"
           >
-            <div className="mb-4 h-1.5 w-10 rounded-full bg-ener-green" />
-            <h3 className="text-lg font-semibold text-[#0B192C]">{pillar.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#0B192C]/70">
+            <div className="mb-4 h-1.5 w-10 rounded-full bg-accent" />
+            <h3 className="text-lg font-bold text-primary">{pillar.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-primary/70">
               {pillar.text}
             </p>
           </ScrollReveal>

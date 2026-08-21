@@ -8,7 +8,7 @@ export default function InvestorIntroHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative h-[calc(100svh-4rem)] min-h-[640px] overflow-hidden bg-slate-950">
+    <section className="relative h-[calc(100svh-4rem)] min-h-[640px] overflow-hidden bg-inverse">
       <motion.img
         src={investorHeroImage}
         alt="High-voltage transmission infrastructure across India's energy grid"
@@ -21,7 +21,7 @@ export default function InvestorIntroHero() {
         className="absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-[72%_center]"
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,26,55,0.88)_0%,rgba(6,26,55,0.62)_32%,rgba(6,26,55,0.22)_62%,rgba(6,26,55,0)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-inverse/90 via-inverse/55 to-transparent" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 lg:px-8">
         <motion.div
@@ -34,15 +34,15 @@ export default function InvestorIntroHero() {
           }}
           className="max-w-3xl"
         >
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
             EnerGrid
           </p>
 
-          <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-semibold tracking-tight text-on-inverse sm:text-6xl lg:text-7xl">
             Investor Relations
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-on-inverse sm:text-xl">
             Building a strong foundation for India&apos;s energy transition.
           </p>
         </motion.div>

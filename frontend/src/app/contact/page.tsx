@@ -96,7 +96,7 @@ function LazyMap() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[340px] overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-[0_20px_50px_-28px_rgba(15,23,42,0.35)] sm:h-[460px]"
+      className="relative h-[340px] overflow-hidden rounded-[1.5rem] border border-primary/10 bg-surface shadow-[0_20px_50px_-28px_rgba(15,23,42,0.35)] sm:h-[460px]"
     >
       {/* Soft map frame gradient */}
       <div className="pointer-events-none absolute inset-0 z-[1] rounded-[1.5rem] ring-1 ring-inset ring-black/5" />
@@ -104,7 +104,7 @@ function LazyMap() {
       {isVisible ? (
         <>
           {!isLoaded && (
-            <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center gap-3 bg-slate-100">
+            <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center gap-3 bg-surface">
               <motion.div
                 animate={
                   reduceMotion
@@ -112,11 +112,11 @@ function LazyMap() {
                     : { scale: [1, 1.15, 1], opacity: [0.55, 1, 0.55] }
                 }
                 transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent"
               >
                 <MapPin size={22} />
               </motion.div>
-              <p className="text-sm text-slate-500">Loading map…</p>
+              <p className="text-sm text-secondary">Loading map…</p>
             </div>
           )}
           <iframe
@@ -132,8 +132,8 @@ function LazyMap() {
           />
         </>
       ) : (
-        <div className="flex h-full flex-col items-center justify-center gap-3 text-slate-400">
-          <MapPin className="h-8 w-8 text-emerald-500/50" />
+        <div className="flex h-full flex-col items-center justify-center gap-3 text-secondary">
+          <MapPin className="h-8 w-8 text-accent/50" />
           <p className="text-sm">Map loads when in view</p>
         </div>
       )}
@@ -144,14 +144,14 @@ function LazyMap() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.35, duration: 0.5 }}
-        className="absolute bottom-4 left-4 right-4 z-[3] flex items-start gap-3 rounded-2xl border border-white/60 bg-white/95 p-3.5 shadow-lg backdrop-blur-md sm:right-auto sm:max-w-xs"
+        className="absolute bottom-4 left-4 right-4 z-[3] flex items-start gap-3 rounded-2xl border border-primary/10 bg-surface/95 p-3.5 shadow-lg backdrop-blur-md sm:right-auto sm:max-w-xs"
       >
-        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/30">
+        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-on-accent shadow-md shadow-accent/30">
           <MapPin size={16} />
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-slate-900">EnerGrid</p>
-          <p className="mt-0.5 text-xs leading-5 text-slate-500">
+          <p className="text-sm font-semibold text-primary">EnerGrid</p>
+          <p className="mt-0.5 text-xs leading-5 text-secondary">
             Windsor · Unit 101 · Kalina, Mumbai 400 098
           </p>
         </div>
@@ -191,21 +191,21 @@ function ContactCard({
           ? undefined
           : { y: -4, transition: { type: "spring", stiffness: 380, damping: 24 } }
       }
-      className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-500/5"
+      className="group flex gap-4 rounded-2xl border border-primary/10 bg-surface p-5 shadow-sm transition-shadow hover:border-accent hover:shadow-lg hover:shadow-accent/5"
     >
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-on-accent">
         <Icon size={20} />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
           {label}
         </p>
-        <div className="mt-2 text-sm leading-6 text-slate-600">{children}</div>
+        <div className="mt-2 text-sm leading-6 text-secondary">{children}</div>
       </div>
       {href && (
         <ArrowUpRight
           size={16}
-          className="mt-1 shrink-0 text-slate-300 transition-colors group-hover:text-emerald-500"
+          className="mt-1 shrink-0 text-secondary transition-colors group-hover:text-accent"
         />
       )}
     </Wrapper>
@@ -214,7 +214,7 @@ function ContactCard({
 
 function ContactHero() {
   return (
-    <section className="relative min-h-[640px] overflow-hidden bg-slate-950">
+    <section className="relative min-h-[640px] overflow-hidden bg-inverse">
       <div className="absolute inset-0">
         <Image
           src="/images/contact-banner.jpg"
@@ -224,7 +224,7 @@ function ContactHero() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/55 to-slate-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-inverse/90 via-inverse/55 to-inverse/20" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl items-center px-6 lg:px-8">
@@ -234,13 +234,13 @@ function ContactHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
             EnerGrid
           </p>
-          <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-semibold tracking-tight text-on-inverse sm:text-6xl lg:text-7xl">
             Contact Us
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-on-inverse sm:text-xl">
             Reach our Mumbai office for enquiries, partnerships and media.
           </p>
         </motion.div>
@@ -256,16 +256,16 @@ export default function Page() {
     <>
       <ContactHero />
 
-      <main className="overflow-hidden bg-white text-slate-900">
+      <main className="overflow-hidden bg-background text-primary">
         {/* Intro + contact grid */}
         <section className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl"
+            className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-accent/10 blur-3xl"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl"
+            className="pointer-events-none absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
           />
 
           <motion.div
@@ -275,13 +275,13 @@ export default function Page() {
             variants={fadeUp}
             className="relative mb-12 max-w-2xl"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
               Get in touch
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
               Our office
             </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
+            <p className="mt-4 text-base leading-7 text-secondary">
               Visit or write to EnerGrid at Windsor, Kalina. For general
               enquiries, investor relations or media requests, use the channels
               below.
@@ -297,7 +297,7 @@ export default function Page() {
               className="space-y-3.5"
             >
               <ContactCard icon={MapPin} label={OFFICE.city}>
-                <p className="font-semibold text-slate-900">{OFFICE.company}</p>
+                <p className="font-semibold text-primary">{OFFICE.company}</p>
                 <address className="mt-1.5 not-italic leading-6">
                   {OFFICE.lines.map((line) => (
                     <span key={line} className="block">
@@ -312,11 +312,11 @@ export default function Page() {
                 label="Email"
                 href={`mailto:${OFFICE.email}`}
               >
-                <span className="font-medium text-slate-900">{OFFICE.email}</span>
+                <span className="font-medium text-primary">{OFFICE.email}</span>
               </ContactCard>
 
               <ContactCard icon={Link2} label="LinkedIn" href={OFFICE.linkedin}>
-                <span className="font-medium text-slate-900">
+                <span className="font-medium text-primary">
                   EnerGrid on LinkedIn
                 </span>
               </ContactCard>
@@ -340,7 +340,7 @@ export default function Page() {
                     reduceMotion ? undefined : { y: -2, scale: 1.02 }
                   }
                   whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent shadow-lg shadow-accent/25 transition hover:opacity-90"
                 >
                   <Navigation size={15} />
                   Get directions
@@ -350,14 +350,14 @@ export default function Page() {
                   href={MAPS_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-emerald-200 hover:text-emerald-700"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/10 bg-surface px-4 py-2.5 text-sm font-semibold text-secondary transition hover:border-accent hover:text-accent"
                 >
                   Open in Google Maps
                   <ExternalLink size={13} />
                 </a>
               </div>
 
-              <p className="mt-3 text-xs leading-5 text-slate-400">
+              <p className="mt-3 text-xs leading-5 text-secondary">
                 Pin resolved from the official Windsor office address on CST /
                 Vidyanagari Marg, Kalina.
               </p>
@@ -366,24 +366,24 @@ export default function Page() {
         </section>
 
         {/* Closing CTA */}
-        <section className="border-t border-slate-100 bg-slate-50 px-6 py-16 lg:px-8 lg:py-20">
+        <section className="border-t border-primary/10 bg-surface px-6 py-16 lg:px-8 lg:py-20">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, ease }}
-            className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 rounded-[1.75rem] bg-slate-950 px-8 py-10 text-white sm:px-12 lg:flex-row lg:items-center lg:py-12"
+            className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 rounded-[1.75rem] bg-inverse px-8 py-10 text-on-inverse sm:px-12 lg:flex-row lg:items-center lg:py-12"
           >
             <div className="max-w-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 Prefer email?
               </p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
                 Write to us and our team will respond promptly.
               </h3>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 text-sm leading-6 text-secondary">
                 Share your query with{" "}
-                <span className="text-white">{OFFICE.email}</span> — we typically
+                <span className="text-on-inverse">{OFFICE.email}</span> — we typically
                 reply within one business day.
               </p>
             </div>
@@ -392,7 +392,7 @@ export default function Page() {
               href={`mailto:${OFFICE.email}`}
               whileHover={reduceMotion ? undefined : { scale: 1.04, y: -2 }}
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-on-accent shadow-lg shadow-accent/30 transition hover:opacity-90"
             >
               Email EnerGrid
               <ArrowUpRight size={18} />
