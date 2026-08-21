@@ -147,7 +147,11 @@
 
 .ir-hero-transition {
   height: 3rem;
-  background: linear-gradient(to bottom, #061a37, #ffffff);
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--bg-inverse)),
+    rgb(var(--bg-primary))
+  );
 }
 
 @media (min-width: 640px) {
@@ -157,19 +161,19 @@
 }
 
 .ir-section-white {
-  background-color: #ffffff;
+  background-color: rgb(var(--bg-secondary));
 }
 
 .ir-section-mint {
-  background-color: #f0fbf6;
+  background-color: rgb(var(--bg-primary));
 }
 
 .ir-section-navy {
-  background-color: #061a37;
+  background-color: rgb(var(--bg-inverse));
 }
 
 .ir-light-card {
-  background: #ffffff;
-  border: 1px solid rgba(11, 25, 44, 0.08);
-  box-shadow: 0 8px 24px rgba(6, 26, 55, 0.04);
+  background: rgb(var(--bg-secondary));
+  border: 1px solid rgb(var(--text-primary) / 0.08);
+  box-shadow: 0 8px 24px rgb(var(--text-primary) / 0.04);
 }
