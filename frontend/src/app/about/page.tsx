@@ -397,7 +397,7 @@ export default function About() {
           MISSION
       ===================================================== */}
 
-      <section className="bg-slate-50 py-24 lg:py-32">
+      <section className="bg-slate-50 py-16 lg:py-20">
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -847,7 +847,7 @@ export default function About() {
           GRID RELIABILITY
       ===================================================== */}
 
-      <section className="relative overflow-hidden bg-slate-950 py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-slate-950 py-16 lg:py-20">
 
         <motion.div
           animate={{
