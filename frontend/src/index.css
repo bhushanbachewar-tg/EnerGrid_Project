@@ -2,17 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --ener-navy: #061a37;
-  --ener-green: #22c55e;
+@layer base {
+  /* Light — soft mint canvas, deep navy type, emerald accents */
+  :root,
+  .light {
+    --bg-primary: 232 245 238;
+    --bg-secondary: 255 255 255;
+    --bg-inverse: 6 26 55;
+    --text-primary: 6 26 55;
+    --text-secondary: 45 70 90;
+    --text-on-inverse: 240 253 244;
+    --color-accent: 5 150 105;
+    --color-on-accent: 255 255 255;
+  }
+
+  /* Dark — deep navy canvas, soft white type, neon green accents */
+  .dark {
+    --bg-primary: 8 18 32;
+    --bg-secondary: 15 32 52;
+    --bg-inverse: 2 10 22;
+    --text-primary: 241 245 249;
+    --text-secondary: 148 163 184;
+    --text-on-inverse: 226 232 240;
+    --color-accent: 57 255 20;
+    --color-on-accent: 8 18 32;
+  }
+
+  /* Solar Flare — cream canvas, deep maroon type, amber accents */
+  .theme-solar {
+    --bg-primary: 255 243 224;
+    --bg-secondary: 255 250 240;
+    --bg-inverse: 74 28 28;
+    --text-primary: 74 28 28;
+    --text-secondary: 122 74 58;
+    --text-on-inverse: 255 247 237;
+    --color-accent: 234 88 12;
+    --color-on-accent: 255 255 255;
+  }
+
+  /* Electric Neon — violet-black canvas, cyan type, magenta accents */
+  .theme-electric {
+    --bg-primary: 8 0 20;
+    --bg-secondary: 24 8 48;
+    --bg-inverse: 4 0 12;
+    --text-primary: 103 232 249;
+    --text-secondary: 165 180 252;
+    --text-on-inverse: 224 242 254;
+    --color-accent: 236 72 153;
+    --color-on-accent: 255 255 255;
+  }
+
+  * {
+    border-color: rgb(var(--text-primary) / 0.12);
+  }
+
+  body {
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
 }
 
 @layer utilities {
   .glass-effect {
-    background: rgba(6, 26, 55, 0.35);
-    border: 1px solid rgba(34, 197, 94, 0.25);
+    background: rgb(var(--bg-secondary) / 0.55);
+    border: 1px solid rgb(var(--color-accent) / 0.25);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 60px rgb(var(--text-primary) / 0.18);
   }
 }

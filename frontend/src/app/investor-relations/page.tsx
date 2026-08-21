@@ -10,7 +10,7 @@ import "./investor-relations.css";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-white text-[#0B192C]">
+    <main className="min-h-screen bg-background text-primary">
       <InvestorIntroHero />
       <InvestorOverview />
       <StrategicPartners />
