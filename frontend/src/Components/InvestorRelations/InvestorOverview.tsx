@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function InvestorOverview() {
   return (
-    <section className="ir-section-white px-4 py-16 sm:py-20 lg:py-24">
+    <section className="ir-section-white px-4 pb-8 pt-12 sm:pb-10 sm:pt-16 lg:pb-12 lg:pt-20">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:gap-16">
         <ScrollReveal variant="left">
           <div>

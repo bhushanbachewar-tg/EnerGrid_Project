@@ -25,7 +25,7 @@ export default function PartnerHighlights() {
   let statIndex = 0;
 
   return (
-    <section className="ir-section-white px-4 py-16 sm:py-20">
+    <section className="ir-section-white px-4 pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pt-12">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
           <ScrollReveal variant="ph-fade">

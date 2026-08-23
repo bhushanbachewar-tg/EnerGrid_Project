@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function StrategicPartners() {
   return (
-    <section id="strategic-partners" className="ir-section-white px-4 py-16 sm:py-20 lg:py-24">
+    <section id="strategic-partners" className="ir-section-white px-4 py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-3xl" variant="fade">
           <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
