@@ -11,11 +11,20 @@ const themes = [
   { id: "electric", label: "Electric", icon: Zap },
 ] as const;
 
-export default function ThemeSwitcher() {
+type ThemeSwitcherProps = {
+  glassMode?: "dark" | "light";
+  compact?: boolean;
+};
+
+export default function ThemeSwitcher({
+  glassMode = "dark",
+  compact = false,
+}: ThemeSwitcherProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const isLightGlass = glassMode === "light";
 
   useEffect(() => {
     setMounted(true);
@@ -53,7 +62,13 @@ export default function ThemeSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Switch theme"
-        className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-background/40 px-6 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur-md transition hover:border-accent/40 hover:bg-background/60 hover:text-accent"
+        className={`inline-flex items-center gap-2 rounded-full border font-semibold shadow-sm backdrop-blur-2xl transition hover:border-accent/40 hover:text-accent ${
+          compact ? "px-4 py-1.5 text-xs" : "px-6 py-2 text-sm"
+        } ${
+          isLightGlass
+            ? "border-primary/10 bg-white/55 text-primary hover:bg-accent/10"
+            : "border-white/25 bg-white/[0.14] text-on-inverse hover:bg-white/25"
+        }`}
       >
         {mounted ? (
           <TriggerIcon size={16} className="text-accent" aria-hidden="true" />
@@ -67,7 +82,11 @@ export default function ThemeSwitcher() {
         <div
           role="listbox"
           aria-label="Themes"
-          className="absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-2xl border border-primary/10 bg-background/95 p-1.5 shadow-xl shadow-primary/10 backdrop-blur-xl"
+          className={`absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-2xl border p-1.5 shadow-xl shadow-primary/10 backdrop-blur-2xl ${
+            isLightGlass
+              ? "border-primary/10 bg-white/85"
+              : "border-white/25 bg-white/[0.16]"
+          }`}
         >
           {themes.map(({ id, label, icon: Icon }) => {
             const isActive = theme === id;
@@ -82,9 +101,13 @@ export default function ThemeSwitcher() {
                   setOpen(false);
                 }}
                 className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-medium transition ${
-                  isActive
-                    ? "bg-accent/15 text-accent"
-                    : "text-secondary hover:bg-surface hover:text-primary"
+                  isActive && isLightGlass
+                    ? "bg-accent/15 text-primary"
+                    : isActive
+                      ? "bg-accent/20 text-on-inverse"
+                      : isLightGlass
+                        ? "text-primary/70 hover:bg-accent/10 hover:text-primary"
+                        : "text-on-inverse/72 hover:bg-white/15 hover:text-on-inverse"
                 }`}
               >
                 <Icon size={15} aria-hidden="true" />
