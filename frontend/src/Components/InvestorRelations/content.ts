@@ -93,6 +93,7 @@ export const partnerHighlights: readonly PartnerHighlightGroup[] = [
       { value: "1,580+", label: "Businesses" },
       { value: "65", label: "Countries" },
       { value: "£8.5 billion", label: "Total net assets" },
+      { value: "30%", label: "Of new commitments in climate finance (2022–2026)" },
     ],
   },
   {
