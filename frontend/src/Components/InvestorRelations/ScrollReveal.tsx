@@ -19,6 +19,7 @@ export type RevealVariant =
   | "focus"
   | "up"
   | "ph-fade"
+  | "ph-left"
   | "ph-number"
   | "ph-caption";
 
@@ -32,6 +33,7 @@ const VARIANT_CLASS: Record<RevealVariant, string> = {
   focus: "ir-reveal-focus",
   up: "ir-reveal-up",
   "ph-fade": "ir-ph-fade",
+  "ph-left": "ir-ph-left",
   "ph-number": "ir-ph-number",
   "ph-caption": "ir-ph-caption",
 };

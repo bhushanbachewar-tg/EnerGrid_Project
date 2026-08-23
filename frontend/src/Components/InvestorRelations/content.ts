@@ -14,7 +14,7 @@ export const investorOverview = {
 } as const;
 
 export const strategicPartnersIntro =
-  "EnerGrid is backed by leading institutional partners whose expertise, financial strength and commitment to sustainability support India's energy transition.";
+  "Who supports EnerGrid, and what they bring to India's energy transition.";
 
 export type StrategicPartner = {
   name: string;
@@ -28,39 +28,34 @@ export const strategicPartners: readonly StrategicPartner[] = [
   {
     name: "IndiGrid",
     shortName: "IndiGrid",
-    tags: ["BSE: 540565", "NSE: INDIGRID"],
+    tags: ["Power Sector InvIT"],
     summary:
-      "IndiGrid is India's first Infrastructure Investment Trust (InvIT) in the power sector, with extensive experience across power transmission, renewable energy and battery energy storage.",
+      "India's first Infrastructure Investment Trust in the power sector, with extensive experience across power transmission, renewable energy and battery energy storage.",
     facts: [
-      "First InvIT in the Indian power sector",
-      "41 power projects, including 49 transmission lines",
-      "~22,550 MVA transformation capacity",
-      "AUM of over ~₹ 294 billion (~USD 3.4 billion)",
-      "Investment manager wholly owned by KKR",
+      "Infrastructure investment platform focused on India's power sector",
+      "Experience spanning transmission, renewable energy and storage",
     ],
   },
   {
     name: "British International Investment",
     shortName: "BII",
-    tags: ["UK DFI", "Impact Investor"],
+    tags: ["UK DFI"],
     summary:
-      "British International Investment (BII) is the UK's development finance institution and impact investor, supporting sustainable and inclusive economic growth across emerging markets.",
+      "The UK's development finance institution and impact investor, supporting sustainable and inclusive economic growth across emerging markets.",
     facts: [
-      "Trusted partner to businesses in Africa, Asia and the Caribbean",
-      "At least 30% of total new commitments (2022–2026) in climate finance",
-      "Founding member of the 2X Challenge — over $33.6 billion raised to empower women's economic development",
+      "Development finance and impact investment partner",
+      "Focused on sustainable and inclusive growth",
     ],
   },
   {
     name: "Norfund",
     shortName: "Norfund",
-    tags: ["Norwegian Government", "Development Fund"],
+    tags: ["Development Fund"],
     summary:
-      "Norfund is the Norwegian Investment Fund for developing countries, focused on sustainable development and responsible investment, including renewable energy.",
+      "Norway's investment fund for developing countries, focused on sustainable development and responsible investment.",
     facts: [
-      "Owned and funded by the Norwegian Government",
-      "Mission to create jobs and improve lives through sustainable businesses",
-      "Manages the Norwegian Climate Investment Fund, investing in renewable energy in developing countries with large fossil fuel emissions",
+      "Government-backed development investment partner",
+      "Strong focus on sustainable businesses and renewable energy",
     ],
   },
 ] as const;
