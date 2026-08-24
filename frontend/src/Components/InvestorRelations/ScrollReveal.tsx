@@ -17,7 +17,11 @@ export type RevealVariant =
   | "scale-soft"
   | "stat"
   | "focus"
-  | "up";
+  | "up"
+  | "ph-fade"
+  | "ph-left"
+  | "ph-number"
+  | "ph-caption";
 
 const VARIANT_CLASS: Record<RevealVariant, string> = {
   fade: "ir-reveal-fade",
@@ -28,6 +32,10 @@ const VARIANT_CLASS: Record<RevealVariant, string> = {
   stat: "ir-reveal-stat",
   focus: "ir-reveal-focus",
   up: "ir-reveal-up",
+  "ph-fade": "ir-ph-fade",
+  "ph-left": "ir-ph-left",
+  "ph-number": "ir-ph-number",
+  "ph-caption": "ir-ph-caption",
 };
 
 type ScrollRevealProps = {

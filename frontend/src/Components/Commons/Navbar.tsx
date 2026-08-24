@@ -1,19 +1,54 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
+import type { IconType } from "react-icons";
+import {
+  HiOutlineBars3,
+  HiOutlineBuildingOffice2,
+  HiOutlineChartBarSquare,
+  HiOutlineChevronRight,
+  HiOutlineEnvelope,
+  HiOutlineHome,
+  HiOutlineNewspaper,
+  HiOutlineXMark,
+} from "react-icons/hi2";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/investor-relations", label: "Investor Relations" },
-  { href: "/media", label: "Media" },
-  { href: "/contact", label: "Contact Us" },
-] as const;
+  { href: "/", label: "Home", icon: HiOutlineHome },
+  { href: "/about", label: "About Us", icon: HiOutlineBuildingOffice2 },
+  {
+    href: "/investor-relations",
+    label: "Investor Relations",
+    icon: HiOutlineChartBarSquare,
+  },
+  { href: "/media", label: "Media", icon: HiOutlineNewspaper },
+  { href: "/contact", label: "Contact Us", icon: HiOutlineEnvelope },
+] satisfies ReadonlyArray<{
+  href: string;
+  label: string;
+  icon: IconType;
+}>;
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 16);
+  });
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -24,26 +59,23 @@ export default function Navbar() {
       }}
       className="fixed left-0 top-0 z-50 w-full"
     >
-      {/* Top energy line */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{
-          duration: 1,
-          delay: 0.3,
-          ease: "easeOut",
-        }}
-        className="h-[3px] w-full origin-left bg-gradient-to-r from-accent via-accent/70 to-accent"
-      />
-
-      {/* Main Navbar */}
-      <div className="border-b border-primary/10 bg-surface/95 shadow-lg backdrop-blur-xl">
-        <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-6 lg:px-8">
-          {/* ================= LOGO ================= */}
+      <div
+        className={`w-full border-b transition-all duration-500 ${
+          isScrolled
+            ? "border-white/20 bg-slate-500/45 shadow-lg shadow-black/15 backdrop-blur-2xl"
+            : "border-transparent bg-transparent shadow-none backdrop-blur-0"
+        }`}
+      >
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-500 sm:px-6 lg:px-8 ${
+            isScrolled ? "h-12" : "h-16"
+          }`}
+        >
           <Link
             href="/"
             className="group flex items-center"
             aria-label="EnerGrid Home"
+            onClick={() => setIsMenuOpen(false)}
           >
             <motion.div
               whileHover={{ scale: 1.04 }}
@@ -53,7 +85,11 @@ export default function Navbar() {
                 stiffness: 400,
                 damping: 15,
               }}
-              className="relative h-10 w-[140px] sm:h-11 sm:w-[160px]"
+              className={`relative transition-all duration-500 ${
+                isScrolled
+                  ? "h-7 w-[104px] sm:w-[118px]"
+                  : "h-9 w-[128px] sm:w-[146px]"
+              }`}
             >
               <Image
                 src="/images/logo.png"
@@ -66,51 +102,80 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
-          {/* ================= DESKTOP NAV ================= */}
           <nav
-            className="hidden items-center gap-1 md:flex"
+            className={`hidden items-center gap-1 rounded-full border backdrop-blur-2xl md:flex ${
+              isScrolled
+                ? "border-white/20 bg-transparent shadow-inner shadow-white/10"
+                : "border-white/15 bg-transparent shadow-sm shadow-black/10"
+            } ${isScrolled ? "p-1" : "p-1.5"}`}
             aria-label="Primary"
           >
-            {navLinks.map((l, index) => (
-              <motion.div
-                key={l.href}
-                initial={{ y: -15, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.4,
-                  delay: 0.35 + index * 0.08,
-                  ease: "easeOut",
-                }}
-              >
-                <Link
-                  href={l.href}
-                  className="group relative block rounded-lg px-4 py-2.5 text-[14px] font-medium text-secondary transition-colors duration-300 hover:bg-primary/5 hover:text-primary"
+            {navLinks.map((link, index) => {
+              const Icon = link.icon;
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+
+              return (
+                <motion.div
+                  key={link.href}
+                  initial={{ y: -15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.35 + index * 0.08,
+                    ease: "easeOut",
+                  }}
                 >
-                  <span className="relative z-10">{l.label}</span>
+                  <Link
+                    href={link.href}
+                    className={`group relative isolate flex items-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ${
+                      isScrolled ? "px-2.5 py-1.5 text-xs" : "px-3 py-2 text-[13px]"
+                    } ${
+                      isScrolled
+                        ? "hover:bg-white/12 hover:text-white"
+                        : "hover:bg-white/10 hover:text-white"
+                    } ${
+                      isActive && isScrolled
+                        ? "bg-emerald-500/90 text-white shadow-sm shadow-black/10"
+                        : isActive
+                          ? "bg-emerald-500/90 text-white shadow-sm shadow-black/10"
+                          : isScrolled
+                            ? "text-white/82"
+                            : "text-white/78"
+                    }`}
+                  >
+                    <Icon
+                      className={`relative z-10 text-[17px] transition-colors ${
+                        isActive
+                          ? "text-white"
+                          : isScrolled
+                            ? "text-white/65"
+                            : "text-white/60"
+                      } group-hover:text-white`}
+                      aria-hidden="true"
+                    />
+                    <span className="relative z-10 whitespace-nowrap">
+                      {link.label}
+                    </span>
+                    {isActive ? (
+                      <motion.span
+                        layoutId="navbar-active-pill"
+                        className={`absolute inset-0 z-0 rounded-full border ${
+                          isScrolled ? "border-white/25" : "border-white/20"
+                        }`}
+                        transition={{
+                          type: "spring",
+                          stiffness: 360,
+                          damping: 32,
+                        }}
+                      />
+                    ) : null}
+                  </Link>
+                </motion.div>
+              );
+            })}
 
-                  {/* Animated underline */}
-                  <motion.span
-                    className="absolute bottom-1 left-4 right-4 h-[2px] origin-left rounded-full bg-accent"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{
-                      duration: 0.3,
-                      ease: "easeOut",
-                    }}
-                  />
-
-                  {/* Hover glow */}
-                  <motion.span
-                    className="absolute inset-0 rounded-lg bg-accent/5"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </Link>
-              </motion.div>
-            ))}
-
-            {/* ================= THEME SWITCHER ================= */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -122,129 +187,142 @@ export default function Navbar() {
               }}
               className="ml-4"
             >
-              <ThemeSwitcher />
+              <ThemeSwitcher glassMode="dark" compact={isScrolled} />
             </motion.div>
           </nav>
 
-          {/* ================= MOBILE NAV ================= */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeSwitcher />
-            <details className="relative">
-              <summary
-                className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-primary/10 bg-primary/5 text-secondary shadow-sm transition-all hover:border-accent/30 hover:bg-primary/10 hover:text-accent"
-                aria-label="Open menu"
+            <ThemeSwitcher glassMode="dark" compact={isScrolled} />
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen((open) => !open)}
+                className={`flex items-center justify-center rounded-full border shadow-sm backdrop-blur-2xl transition-all hover:border-accent/30 ${
+                  isScrolled ? "h-10 w-10" : "h-11 w-11"
+                } ${
+                  isScrolled
+                    ? "border-white/20 bg-slate-900/20 text-white hover:bg-white/15"
+                    : "border-white/20 bg-slate-950/30 text-white hover:border-white/40 hover:bg-slate-950/45"
+                }`}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
               >
-                <span className="sr-only">Open menu</span>
+                {isMenuOpen ? (
+                  <HiOutlineXMark className="text-2xl" aria-hidden="true" />
+                ) : (
+                  <HiOutlineBars3 className="text-2xl" aria-hidden="true" />
+                )}
+              </button>
 
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 7H20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M4 12H20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M4 17H20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </summary>
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -10,
-                  scale: 0.96,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
-                className="absolute right-0 mt-3 w-72 overflow-hidden rounded-2xl border border-primary/10 bg-surface/98 p-2 shadow-2xl shadow-primary/20 backdrop-blur-xl"
-              >
-                <div className="border-b border-primary/10 px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-                    Navigation
-                  </p>
-                </div>
-
-                <nav
-                  className="flex flex-col gap-1 py-2"
-                  aria-label="Mobile primary"
-                >
-                  {navLinks.map((l, index) => (
-                    <motion.div
-                      key={l.href}
-                      initial={{
-                        opacity: 0,
-                        x: -10,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay: index * 0.05,
-                      }}
+              <AnimatePresence>
+                {isMenuOpen ? (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: -10,
+                      scale: 0.96,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                    }}
+                    transition={{
+                      duration: 0.25,
+                      ease: "easeOut",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: -8,
+                      scale: 0.98,
+                    }}
+                    className={`absolute right-0 mt-3 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border p-2 shadow-2xl shadow-black/25 backdrop-blur-2xl ${
+                      isScrolled
+                        ? "border-white/20 bg-slate-500/85"
+                        : "border-white/20 bg-slate-950/85"
+                    }`}
+                  >
+                    <div
+                      className={`border-b px-4 py-3 ${
+                        isScrolled ? "border-white/15" : "border-white/15"
+                      }`}
                     >
-                      <Link
-                        href={l.href}
-                        className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-secondary transition-all duration-200 hover:bg-accent/10 hover:text-accent"
+                      <p
+                        className={`text-xs font-bold uppercase tracking-[0.22em] ${
+                          isScrolled ? "text-white/75" : "text-white/70"
+                        }`}
                       >
-                        <span>{l.label}</span>
+                        Navigation
+                      </p>
+                    </div>
 
-                        <motion.svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                          className="text-secondary/50"
-                          whileHover={{
-                            x: 4,
-                          }}
-                        >
-                          <path
-                            d="M5 12H19"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M13 6L19 12L13 18"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </motion.svg>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </nav>
-              </motion.div>
-            </details>
+                    <nav
+                      className="flex flex-col gap-1 py-2"
+                      aria-label="Mobile primary"
+                    >
+                      {navLinks.map((link, index) => {
+                        const Icon = link.icon;
+                        const isActive =
+                          pathname === link.href ||
+                          (link.href !== "/" &&
+                            pathname.startsWith(link.href));
+
+                        return (
+                          <motion.div
+                            key={link.href}
+                            initial={{
+                              opacity: 0,
+                              x: -10,
+                            }}
+                            animate={{
+                              opacity: 1,
+                              x: 0,
+                            }}
+                            transition={{
+                              delay: index * 0.05,
+                            }}
+                          >
+                            <Link
+                              href={link.href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className={`group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                                isScrolled
+                                  ? "hover:bg-white/12 hover:text-white"
+                                  : "hover:bg-white/10 hover:text-white"
+                              } ${
+                                isActive && isScrolled
+                                  ? "bg-emerald-500/90 text-white"
+                                  : isActive
+                                    ? "bg-emerald-500/90 text-white"
+                                    : isScrolled
+                                      ? "text-white/82"
+                                      : "text-white/78"
+                              }`}
+                            >
+                              <span className="flex min-w-0 items-center gap-3">
+                                <Icon
+                                  className="shrink-0 text-lg"
+                                  aria-hidden="true"
+                                />
+                                <span className="truncate">{link.label}</span>
+                              </span>
+                              <HiOutlineChevronRight
+                                className={`shrink-0 text-lg transition-transform group-hover:translate-x-1 ${
+                                  isScrolled
+                                    ? "text-white/45 group-hover:text-white"
+                                    : "text-white/45 group-hover:text-white"
+                                }`}
+                                aria-hidden="true"
+                              />
+                            </Link>
+                          </motion.div>
+                        );
+                      })}
+                    </nav>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

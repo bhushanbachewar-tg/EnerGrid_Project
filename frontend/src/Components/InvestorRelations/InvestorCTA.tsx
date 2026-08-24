@@ -8,7 +8,7 @@ export default function InvestorCTA() {
     <section className="ir-section-navy px-4 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <ScrollReveal variant="scale">
-          <h2 className="text-3xl font-extrabold tracking-tight text-on-inverse sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight text-on-inverse md:text-4xl">
             {investorCta.heading}
           </h2>
         </ScrollReveal>

@@ -6,7 +6,7 @@ export default function InvestorResources() {
     <section className="ir-section-white px-4 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal variant="fade">
-          <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight text-primary md:text-4xl">
             {investorResources.heading}
           </h2>
         </ScrollReveal>
@@ -25,7 +25,7 @@ export default function InvestorResources() {
               variant={index % 2 === 0 ? "left" : "right"}
             >
               <div className="ir-light-card flex min-h-[7.5rem] flex-col justify-between rounded-2xl p-5 transition duration-300 hover:border-accent/30">
-                <h3 className="text-base font-bold text-primary">{item.title}</h3>
+                <h3 className="text-base font-semibold text-primary">{item.title}</h3>
                 <span className="mt-5 inline-flex w-fit rounded-full border border-primary/10 px-3 py-1 text-xs font-semibold text-primary/60">
                   {item.note}
                 </span>
