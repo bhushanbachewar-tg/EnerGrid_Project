@@ -31,7 +31,7 @@ const navLinks = [
     label: "Investor Relations",
     icon: HiOutlineChartBarSquare,
   },
-  { href: "/media", label: "Media", icon: HiOutlineNewspaper },
+  //{ href: "/media", label: "Media", icon: HiOutlineNewspaper },
   { href: "/contact", label: "Contact Us", icon: HiOutlineEnvelope },
 ] satisfies ReadonlyArray<{
   href: string;
@@ -129,30 +129,22 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`group relative isolate flex items-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ${
+                    className={`group relative isolate flex items-center gap-2 overflow-hidden rounded-full border border-transparent font-semibold transition-all duration-300 hover:border-white/55 hover:bg-white/70 hover:text-black hover:shadow-lg hover:shadow-white/10 hover:backdrop-blur-xl ${
                       isScrolled ? "px-2.5 py-1.5 text-xs" : "px-3 py-2 text-[13px]"
-                    } ${
-                      isScrolled
-                        ? "hover:bg-white/12 hover:text-white"
-                        : "hover:bg-white/10 hover:text-white"
                     } ${
                       isActive && isScrolled
                         ? "bg-emerald-500/90 text-white shadow-sm shadow-black/10"
                         : isActive
                           ? "bg-emerald-500/90 text-white shadow-sm shadow-black/10"
-                          : isScrolled
-                            ? "text-white/82"
-                            : "text-white/78"
+                          : "text-white"
                     }`}
                   >
                     <Icon
                       className={`relative z-10 text-[17px] transition-colors ${
                         isActive
                           ? "text-white"
-                          : isScrolled
-                            ? "text-white/65"
-                            : "text-white/60"
-                      } group-hover:text-white`}
+                          : "text-white"
+                      } group-hover:text-black`}
                       aria-hidden="true"
                     />
                     <span className="relative z-10 whitespace-nowrap">
@@ -285,18 +277,12 @@ export default function Navbar() {
                             <Link
                               href={link.href}
                               onClick={() => setIsMenuOpen(false)}
-                              className={`group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
-                                isScrolled
-                                  ? "hover:bg-white/12 hover:text-white"
-                                  : "hover:bg-white/10 hover:text-white"
-                              } ${
+                              className={`group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-sm font-semibold transition-all duration-200 hover:border-white/55 hover:bg-white/70 hover:text-black hover:shadow-lg hover:shadow-white/10 hover:backdrop-blur-xl ${
                                 isActive && isScrolled
                                   ? "bg-emerald-500/90 text-white"
                                   : isActive
                                     ? "bg-emerald-500/90 text-white"
-                                    : isScrolled
-                                      ? "text-white/82"
-                                      : "text-white/78"
+                                    : "text-white"
                               }`}
                             >
                               <span className="flex min-w-0 items-center gap-3">
@@ -307,11 +293,7 @@ export default function Navbar() {
                                 <span className="truncate">{link.label}</span>
                               </span>
                               <HiOutlineChevronRight
-                                className={`shrink-0 text-lg transition-transform group-hover:translate-x-1 ${
-                                  isScrolled
-                                    ? "text-white/45 group-hover:text-white"
-                                    : "text-white/45 group-hover:text-white"
-                                }`}
+                                className="shrink-0 text-lg text-white transition-transform group-hover:translate-x-1 group-hover:text-black"
                                 aria-hidden="true"
                               />
                             </Link>
