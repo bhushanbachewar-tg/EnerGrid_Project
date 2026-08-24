@@ -108,11 +108,36 @@ export const investorResources = {
   description:
     "Access key information and resources related to EnerGrid and its investment partners.",
   items: [
-    { title: "Investor Details", note: "Coming soon" },
-    { title: "Company Information", note: "Coming soon" },
-    { title: "Reports & Presentations", note: "Coming soon" },
-    { title: "Corporate Disclosures", note: "Coming soon" },
-    { title: "Announcements", note: "Coming soon" },
+    {
+      title: "Investor Details",
+      description: "Key information for current and prospective investors",
+      note: "Coming soon",
+      image: "/images/investor-relations-hero.jpg",
+    },
+    {
+      title: "Company Information",
+      description: "Company profile and key information",
+      note: "Coming soon",
+      image: "/images/about-snapshot.jpg",
+    },
+    {
+      title: "Reports & Presentations",
+      description: "Financial reports and investor presentations",
+      note: "Coming soon",
+      image: "/images/contact-banner.jpg",
+    },
+    {
+      title: "Corporate Disclosures",
+      description: "Corporate disclosures and regulatory information",
+      note: "Coming soon",
+      image: "/images/hero-bg.jpg",
+    },
+    {
+      title: "Announcements",
+      description: "Investor announcements and updates",
+      note: "Coming soon",
+      image: "/images/investor-relations-hero.jpg",
+    },
   ],
 } as const;
 
