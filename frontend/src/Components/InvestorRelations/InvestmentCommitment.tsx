@@ -12,7 +12,7 @@ export default function InvestmentCommitment() {
         </ScrollReveal>
 
         <ScrollReveal delay={140} variant="focus">
-          <p className="mt-5 text-4xl font-extrabold tracking-tight text-on-inverse sm:text-5xl md:text-6xl">
+          <p className="mt-5 text-4xl font-semibold leading-tight text-on-inverse sm:text-5xl md:text-6xl">
             {investmentCommitment.amount}
           </p>
         </ScrollReveal>
