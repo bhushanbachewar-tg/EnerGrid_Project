@@ -1,17 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { ElementType } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Variants } from "framer-motion";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   BarChart3,
   BatteryCharging,
-  ChevronLeft,
-  ChevronRight,
   CircuitBoard,
   Gem,
   Handshake,
@@ -37,27 +34,6 @@ const staggerParent: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } },
 };
-
-const heroSlides = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=85",
-    alt: "High-voltage transmission towers at sunset",
-    title: "Powering India's clean energy backbone.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=85",
-    alt: "Solar panels across a renewable energy field",
-    title: "Flexible capacity for a changing grid.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1800&q=85",
-    alt: "Wind turbines generating renewable energy",
-    title: "A focused platform for dependable power.",
-  },
-];
 
 const focusAreas = [
   {
@@ -216,7 +192,7 @@ function FocusCard({
       whileInView="show"
       viewport={viewportOnce}
       whileHover={{ y: -10 }}
-      className="group relative min-h-[470px] overflow-hidden rounded-xl border border-primary/10 bg-white shadow-sm transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/12"
+      className="group relative min-h-[470px] overflow-hidden rounded-xl border border-primary/10 bg-white shadow-sm transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/12 dark:border-white/10 dark:bg-slate-900/80 dark:shadow-black/20 dark:hover:border-accent/45 dark:hover:shadow-black/35"
     >
       <div className="absolute inset-x-0 top-0 h-1 bg-accent opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="relative h-56 overflow-hidden">
@@ -237,7 +213,7 @@ function FocusCard({
       </div>
 
       <div className="relative p-7">
-        <div className="absolute -top-4 left-7 h-8 w-8 rotate-45 rounded-sm bg-white" />
+        <div className="absolute -top-4 left-7 h-8 w-8 rotate-45 rounded-sm bg-white dark:bg-slate-900" />
         <h3 className="relative text-xl font-semibold text-primary">{title}</h3>
         <p className="relative mt-3 text-sm leading-7 text-secondary">
           {description}
@@ -256,55 +232,22 @@ function FocusCard({
 }
 
 export default function Page() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const currentSlide = heroSlides[activeSlide];
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveSlide((slide) => (slide + 1) % heroSlides.length);
-    }, 6000);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const showPreviousSlide = () => {
-    setActiveSlide(
-      (slide) => (slide - 1 + heroSlides.length) % heroSlides.length,
-    );
-  };
-
-  const showNextSlide = () => {
-    setActiveSlide((slide) => (slide + 1) % heroSlides.length);
-  };
-
   return (
     <main className="overflow-hidden bg-background">
       <section className="relative min-h-screen overflow-hidden bg-slate-950">
         <div className="absolute inset-0">
-          {heroSlides.map((slide, index) => (
-            <motion.div
-              key={slide.image}
-              initial={false}
-              animate={{
-                opacity: index === activeSlide ? 1 : 0,
-                scale: index === activeSlide ? 1 : 1.03,
-              }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                priority={index === 0}
-                className="object-cover object-center"
-                sizes="100vw"
-              />
-            </motion.div>
-          ))}
+          <video
+            className="h-full w-full object-cover object-center"
+            src="/videos/0_Bulgaria_Europe_1920x1080.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Renewable energy landscape background video"
+          />
         </div>
         <motion.div
-          key={`drift-${currentSlide.image}`}
           aria-hidden="true"
           initial={{ x: "-12%" }}
           animate={{ x: "112%" }}
@@ -313,7 +256,6 @@ export default function Page() {
         />
         <div className="absolute inset-0 bg-slate-950/24" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/74 via-slate-950/34 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background/80 to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl items-center px-6 pb-20 pt-16 lg:px-8">
           <motion.div
@@ -323,39 +265,12 @@ export default function Page() {
             className="w-full"
           >
             <div className="max-w-2xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide.title}
-                  variants={staggerParent}
-                  initial="hidden"
-                  animate="show"
-                  exit={{ opacity: 0, y: -18 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                >
-                  <h1 className="max-w-2xl text-4xl font-semibold leading-[1.06] text-on-inverse sm:text-5xl lg:text-7xl">
-                    {currentSlide.title.split(" ").map((word, index) => (
-                      <motion.span
-                        key={`${currentSlide.title}-${word}-${index}`}
-                        variants={{
-                          hidden: { opacity: 0, y: 42, filter: "blur(8px)" },
-                          show: {
-                            opacity: 1,
-                            y: 0,
-                            filter: "blur(0px)",
-                            transition: {
-                              duration: 0.55,
-                              ease: [0.22, 1, 0.36, 1],
-                            },
-                          },
-                        }}
-                        className="mr-4 inline-block"
-                      >
-                        {word}
-                      </motion.span>
-                    ))}
-                  </h1>
-                </motion.div>
-              </AnimatePresence>
+              <motion.h1
+                variants={reveal}
+                className="max-w-2xl text-4xl font-semibold leading-[1.06] text-on-inverse sm:text-5xl lg:text-7xl"
+              >
+                Powering India's clean energy backbone.
+              </motion.h1>
 
               <motion.div variants={reveal} className="mt-8">
                 <Link
@@ -368,44 +283,6 @@ export default function Page() {
                     <ArrowRight size={16} />
                   </span>
                 </Link>
-              </motion.div>
-
-              <motion.div
-                variants={reveal}
-                className="mt-14 flex items-center gap-3"
-                aria-label="Hero carousel controls"
-              >
-                <button
-                  type="button"
-                  onClick={showPreviousSlide}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-slate-950/20 text-white backdrop-blur transition hover:border-white hover:bg-slate-950/35"
-                  aria-label="Show previous slide"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <div className="flex items-center gap-2 px-1">
-                  {heroSlides.map((slide, index) => (
-                    <button
-                      key={slide.image}
-                      type="button"
-                      onClick={() => setActiveSlide(index)}
-                      className={`h-2 rounded-full transition-all ${
-                        index === activeSlide
-                          ? "w-8 bg-accent"
-                          : "w-2 bg-white/50 hover:bg-white"
-                      }`}
-                      aria-label={`Show slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  onClick={showNextSlide}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-slate-950/20 text-white backdrop-blur transition hover:border-white hover:bg-slate-950/35"
-                  aria-label="Show next slide"
-                >
-                  <ChevronRight size={18} />
-                </button>
               </motion.div>
             </div>
           </motion.div>
@@ -480,7 +357,7 @@ export default function Page() {
                   <motion.div
                     whileHover={{ x: isReversed ? -5 : 5 }}
                     transition={{ type: "spring", stiffness: 170, damping: 24 }}
-                    className={`relative rounded-xl border border-primary/10 bg-surface/80 p-7 shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:border-accent/30 group-hover:bg-surface group-hover:shadow-xl group-hover:shadow-primary/8 lg:p-9 ${
+                    className={`relative rounded-xl border border-primary/10 bg-surface/80 p-7 shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:border-accent/30 group-hover:bg-surface group-hover:shadow-xl group-hover:shadow-primary/8 dark:border-white/10 dark:bg-slate-900/80 dark:shadow-black/20 dark:group-hover:bg-slate-900 dark:group-hover:shadow-black/30 lg:p-9 ${
                       isReversed ? "lg:order-1" : ""
                     }`}
                   >
@@ -516,7 +393,7 @@ export default function Page() {
 
       <section
         id="core-focus"
-        className="relative overflow-hidden border-y border-primary/10 bg-[#f8fbfa] py-24"
+        className="relative overflow-hidden border-y border-primary/10 bg-[#f8fbfa] py-24 dark:border-white/10 dark:bg-slate-950"
       >
         <div
           aria-hidden="true"
@@ -540,7 +417,7 @@ export default function Page() {
             </div>
             <Link
               href="/about"
-              className="group relative inline-flex w-fit items-center gap-3 overflow-hidden rounded-lg border border-accent/25 bg-white px-4 py-2.5 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-xl hover:shadow-primary/10"
+              className="group relative inline-flex w-fit items-center gap-3 overflow-hidden rounded-lg border border-accent/25 bg-white px-4 py-2.5 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-xl hover:shadow-primary/10 dark:border-white/10 dark:bg-slate-900/80 dark:hover:border-accent/50 dark:hover:shadow-black/30"
             >
               <span className="absolute inset-y-0 left-0 w-1 bg-accent transition-all duration-300 group-hover:w-full group-hover:opacity-10" />
               <span className="relative">See How We Build</span>
@@ -643,7 +520,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-20 dark:bg-slate-950">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <SectionHeading
@@ -664,7 +541,7 @@ export default function Page() {
                   key={partner.name}
                   variants={reveal}
                   whileHover={{ y: -7 }}
-                  className="group relative flex min-h-40 flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background p-6 text-primary shadow-sm transition-all duration-500 hover:border-accent/35 hover:bg-white hover:shadow-2xl hover:shadow-primary/10"
+                  className="group relative flex min-h-40 flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background p-6 text-primary shadow-sm transition-all duration-500 hover:border-accent/35 hover:bg-white hover:shadow-2xl hover:shadow-primary/10 dark:border-white/10 dark:bg-slate-900/75 dark:shadow-black/20 dark:hover:border-accent/45 dark:hover:bg-slate-900 dark:hover:shadow-black/35"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-accent/20 bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-on-accent">
@@ -688,7 +565,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#f8fbfa] py-24">
+      <section className="relative overflow-hidden bg-[#f8fbfa] py-24 dark:bg-slate-950">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 h-px bg-primary/10"
@@ -708,7 +585,7 @@ export default function Page() {
           viewport={viewportOnce}
           className="relative mx-auto max-w-5xl px-6 text-center lg:px-8"
         >
-          <div className="rounded-2xl border border-primary/10 bg-white px-6 py-12 shadow-2xl shadow-primary/8 md:px-12">
+          <div className="rounded-2xl border border-primary/10 bg-white px-6 py-12 shadow-2xl shadow-primary/8 dark:border-white/10 dark:bg-slate-900/85 dark:shadow-black/35 md:px-12">
             <div className="mx-auto flex w-fit items-center gap-2 rounded-full border border-accent/20 bg-accent/8 px-4 py-2">
               <Leaf size={15} className="text-accent" />
               <p className="text-sm font-semibold uppercase text-accent">
@@ -734,7 +611,7 @@ export default function Page() {
                 <motion.span
                   key={item}
                   variants={reveal}
-                  className="rounded-full border border-primary/10 bg-[#f8fbfa] px-4 py-2 text-xs font-semibold uppercase text-secondary"
+                  className="rounded-full border border-primary/10 bg-[#f8fbfa] px-4 py-2 text-xs font-semibold uppercase text-secondary dark:border-white/10 dark:bg-slate-950/70"
                 >
                   {item}
                 </motion.span>

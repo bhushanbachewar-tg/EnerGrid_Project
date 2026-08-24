@@ -203,13 +203,13 @@ export default function About() {
           HERO
       ===================================================== */}
 
-      <section className="relative min-h-[560px] overflow-hidden bg-slate-950">
+      <section className="relative min-h-[500px] overflow-hidden bg-slate-950">
 
         {/* Background image */}
 
         <motion.img
-          src="https://www.downtoearth.org.in/wp-content/uploads/2021/08/solar-wind-energy.jpg"
-          alt="Renewable energy infrastructure"
+          src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=85"
+          alt="Power transmission infrastructure at sunset"
           initial={{
             scale: 1.08,
             opacity: 0,
@@ -231,25 +231,25 @@ export default function About() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-slate-950/55"
+          className="absolute inset-0 bg-slate-950/62"
         />
 
         {/* Hero content */}
 
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-16 lg:px-8">
+        <div className="relative mx-auto flex min-h-[500px] max-w-7xl items-center px-6 py-20 lg:px-8">
 
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="max-w-4xl"
+            className="max-w-3xl"
           >
 
             {/* Badge */}
 
             <motion.div
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md"
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md"
             >
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
 
@@ -260,30 +260,26 @@ export default function About() {
 
             <motion.h1
               variants={fadeUp}
-              className="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
+              className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
             >
-              Building the infrastructure for{" "}
-              <span className="text-emerald-400">
-                a cleaner energy future.
-              </span>
+              Infrastructure for India's clean energy future.
             </motion.h1>
 
             {/* Description */}
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-2xl text-lg leading-8 text-slate-200 sm:text-xl"
+              className="mt-5 max-w-xl text-base leading-7 text-slate-200 sm:text-lg"
             >
-              EnerGrid is committed to leading India's energy transition by
-              developing critical infrastructure across power transmission,
-              battery energy storage and renewable energy.
+              Developing transmission, storage and renewable energy assets for
+              a stronger, more reliable grid.
             </motion.p>
 
             {/* Buttons */}
 
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-7 flex flex-wrap gap-4"
             >
 
               <motion.a
@@ -300,20 +296,6 @@ export default function About() {
                 Explore our focus
 
                 <ArrowRight size={18} />
-              </motion.a>
-
-              <motion.a
-                href="#our-story"
-                whileHover={{
-                  scale: 1.04,
-                  y: -2,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
-              >
-                Our story
               </motion.a>
 
             </motion.div>
