@@ -261,6 +261,7 @@ export default function About() {
             <motion.h1
               variants={fadeUp}
               className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
             >
               Infrastructure for India's clean energy future.
             </motion.h1>
@@ -749,7 +750,7 @@ export default function About() {
               className="mt-6 rounded-2xl bg-slate-950 p-5 text-white"
             >
 
-              <p className="text-3xl font-semibold">
+              <p className="text-3xl font-bold">
                 $300M
               </p>
 
